@@ -307,11 +307,19 @@ const handle = {
         // assignment.
         this.memoise(member, 2);
 
-        value = t.binaryExpression(
-          operator.slice(0, -1),
-          this.get(member),
-          value,
-        );
+        if (operator === "||=" || operator === "&&=" || operator === "??=") {
+          value = t.logicalExpression(
+            operator.slice(0, -1),
+            this.get(member),
+            value,
+          );
+        } else {
+          value = t.binaryExpression(
+            operator.slice(0, -1),
+            this.get(member),
+            value,
+          );
+        }
       }
 
       parentPath.replaceWith(this.set(member, value));
