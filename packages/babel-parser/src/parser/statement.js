@@ -1205,6 +1205,12 @@ export default class StatementParser extends ExpressionParser {
           continue;
         }
 
+        if (this.match(tt._include)) {
+          const node = this.startNode();
+          this.parseClassModuleInclude(classBody, node);
+          continue;
+        }
+
         if (this.match(tt.at)) {
           decorators.push(this.parseDecorator());
           continue;
@@ -1655,6 +1661,16 @@ export default class StatementParser extends ExpressionParser {
 
   parseClassSuper(node: N.Class): void {
     node.superClass = this.eat(tt._extends) ? this.parseExprSubscripts() : null;
+  }
+
+  parseClassModuleInclude(
+    classBody: N.ClassBody,
+    node: N.ClassModuleInlude
+  ): void {
+    this.next();
+    node.value = this.parseIdentifier();
+    this.finishNode(node, 'ClassModuleInclude');
+    classBody.body.push(node);
   }
 
   // Parses module export declaration.

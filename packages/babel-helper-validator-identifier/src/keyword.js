@@ -33,6 +33,7 @@ const reservedWords = {
     "true",
     "false",
     "in",
+    "include",
     "instanceof",
     "typeof",
     "void",

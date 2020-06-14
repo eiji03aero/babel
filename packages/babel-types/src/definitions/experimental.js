@@ -95,6 +95,19 @@ defineType("ClassProperty", {
   },
 });
 
+defineType("ClassModuleInclude", {
+  visitor: ["value"],
+  builder: ["value"],
+  aliases: [],
+  fields: {
+    ...classMethodOrPropertyCommon,
+    value: {
+      validate: assertNodeType("Expression"),
+      optional: true,
+    },
+  },
+});
+
 defineType("OptionalMemberExpression", {
   builder: ["object", "property", "computed", "optional"],
   visitor: ["object", "property"],

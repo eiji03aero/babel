@@ -660,6 +660,10 @@ export function ClassProperty(...args: Array<any>): Object {
   return builder("ClassProperty", ...args);
 }
 export { ClassProperty as classProperty };
+export function ClassModuleInclude(...args: Array<any>): Object {
+  return builder("ClassModuleInclude", ...args);
+}
+export { ClassModuleInclude as classModuleInclude };
 export function OptionalMemberExpression(...args: Array<any>): Object {
   return builder("OptionalMemberExpression", ...args);
 }

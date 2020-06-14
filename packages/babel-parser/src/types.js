@@ -784,6 +784,11 @@ export type ClassPrivateProperty = NodeBase & {
   readonly?: true,
 };
 
+export type ClassModuleInlude = NodeBase & {
+  type: "ClassModuleInclude",
+  value: Expression,
+};
+
 export type OptClassDeclaration = ClassBase &
   DeclarationBase &
   HasDecorators & {

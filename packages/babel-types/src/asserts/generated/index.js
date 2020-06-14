@@ -722,6 +722,12 @@ export function assertBindExpression(node: Object, opts?: Object = {}): void {
 export function assertClassProperty(node: Object, opts?: Object = {}): void {
   assert("ClassProperty", node, opts);
 }
+export function assertClassModuleInclude(
+  node: Object,
+  opts?: Object = {},
+): void {
+  assert("ClassModuleInclude", node, opts);
+}
 export function assertOptionalMemberExpression(
   node: Object,
   opts?: Object = {},
